@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
 
   validate :check_portfolio_completion
 
-  has_many :projects
+  has_many :projects, -> { order(updated_at: :desc) }
   has_many :location_interests
   has_many :locations, through: :location_interests
   belongs_to :cohort
